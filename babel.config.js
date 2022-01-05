@@ -11,5 +11,6 @@ module.exports = (api) => ({
         corejs: 3,
       },
     ],
+    "@babel/preset-typescript",
   ],
 });

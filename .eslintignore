@@ -1,2 +1,6 @@
 dist/
 node_modules/
+tsconfig.json
+babel.config.js
+.eslintrc.js
+webpack.config.js

@@ -6,22 +6,22 @@
   "scripts": {
     "build": "webpack build --node-env production",
     "test": "jest",
-    "lint": "eslint . & prettier --check .",
-    "lint:fix": "eslint . --fix & prettier --write .",
+    "lint": "eslint . --ext .js,.ts & prettier --check . && tsc --noEmit",
+    "lint:fix": "eslint . --fix --ext .js,.ts & prettier --write .",
     "prepare": "husky install",
     "dev": "webpack serve --open"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lliriq77/otus--page-layout.git"
+    "url": "git+https://github.com/lliriq77/otus--game-of-life.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/lliriq77/otus--page-layout/issues"
+    "url": "https://github.com/lliriq77/otus--game-of-life/issues"
   },
   "keywords": [],
-  "homepage": "https://github.com/lliriq77/otus--page-layout#readme",
+  "homepage": "https://github.com/lliriq77/otus--game-of-life#readme",
   "dependencies": {
     "csso": "^5.0.1",
     "lodash": "^4.17.21"
@@ -31,7 +31,10 @@
     "@babel/core": "^7.16.0",
     "@babel/plugin-transform-runtime": "^7.16.4",
     "@babel/preset-env": "^7.16.4",
+    "@babel/preset-typescript": "^7.16.7",
     "@types/jest": "^27.0.3",
+    "@typescript-eslint/eslint-plugin": "^5.9.0",
+    "@typescript-eslint/parser": "^5.9.0",
     "babel-jest": "^27.4.2",
     "babel-loader": "^8.2.3",
     "css-loader": "^6.5.1",
@@ -56,7 +59,10 @@
     "webpack-dev-server": "^4.6.0"
   },
   "lint-staged": {
-    "*.js": "eslint --cache --fix",
-    "*.{js,css,md,yml,html}": "prettier --write"
+    "*.js,*.ts": [
+      "prettier --write",
+      "eslint --cache --fix --ext .js,.ts"
+    ],
+    "*.{css,md,yml,html}": "prettier --write"
   }
 }

@@ -6,9 +6,9 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const CssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 
 module.exports = {
-  entry: resolve(__dirname, "./src/index.js"),
+  entry: resolve(__dirname, "./src/index.ts"),
   output: {
-    filename: "[name].[hash:20].js",
+    filename: "[name].[hash:10].js",
     path: resolve(`${__dirname}/dist`),
     clean: true,
     environment: {
@@ -19,7 +19,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.(j|t)s$/,
         exclude: /(node_modules)/,
         use: {
           loader: "babel-loader",

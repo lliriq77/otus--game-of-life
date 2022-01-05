@@ -1,10 +1,17 @@
 module.exports = {
+  root: true,
+  parser: "@typescript-eslint/parser",
   env: {
     browser: true,
     es2021: true,
     "jest/globals": true,
   },
-  extends: ["airbnb-base", "prettier"],
+  extends: [
+    "airbnb-base",
+    "prettier",
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+  ],
   parserOptions: {
     ecmaVersion: 12,
   },
@@ -24,6 +31,8 @@ module.exports = {
         ignoreStrings: true,
       },
     ],
+    "import/no-unresolved": "off", // https://github.com/typescript-eslint/typescript-eslint/issues/1624
+    "import/extensions": ["warn", "never"], // https://github.com/benmosher/eslint-plugin-import/blob/master/docs/rules/extensions.md
   },
-  plugins: ["jest"],
+  plugins: ["jest", "@typescript-eslint"],
 };

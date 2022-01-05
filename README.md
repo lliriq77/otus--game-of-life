@@ -1,4 +1,4 @@
-# Реализация приложения **["Игра Жизнь"](https://ru.wikipedia.org/wiki/Игра_«Жизнь»)** на языке  Typescript
+# Реализация приложения **["Игра Жизнь"](https://ru.wikipedia.org/wiki/Игра_«Жизнь»)** на языке Typescript
 
 > ##### Домашнее задание курса **[JavaScript Developer. Basic](https://otus.ru/lessons/javascript-basic/?int_source=courses_catalog&int_term=programming)**
 >
