@@ -1,1 +1,1 @@
-body{font-family:sans-serif}table{border-collapse:collapse}td{border:1px solid gray;width:20px;height:20px}.cell--alive{background-color:#000}
+body{font-family:sans-serif}table{border-collapse:collapse}td{border:1px solid gray;width:20px;height:20px}.cell--alive{background-color:#000}.cell--dying{background-color:#00f}
