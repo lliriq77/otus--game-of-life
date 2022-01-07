@@ -16,6 +16,7 @@ module.exports = {
     ecmaVersion: 12,
   },
   rules: {
+    "no-nested-ternary": "off",
     "no-restricted-globals": "off",
     "no-undef": "off",
     "no-use-before-define": "off",

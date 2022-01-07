@@ -5,6 +5,7 @@ let WIDTH = 20;
 let HEIGHT = 20;
 const GAME_STEP_DELAY_IN_MS = 1000;
 let field: number[][];
+
 export function createGameOfLife(
   el: HTMLElement,
   step = GAME_STEP_DELAY_IN_MS

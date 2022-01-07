@@ -44,6 +44,7 @@ describe("drawField", () => {
       [1, 1, 1],
     ];
     drawField(el, state, onCellClick);
+    console.log(el.innerHTML);
     state.forEach((row, y) =>
       row.forEach((cell, x) => {
         const cellEl = el.querySelector(`.cell[data-x="${x}"][data-y="${y}"]`);
@@ -51,10 +52,12 @@ describe("drawField", () => {
         expect(cellEl).toBeTruthy();
         expect(cellEl.classList.contains("cell")).toBe(true);
         expect(
-          cellEl.classList.contains(cell ? "cell--alive" : "cell--dead")
+          cellEl.classList.contains(cell ? "cell--alive" : "cell--dead") ||
+            cellEl.classList.contains(cell ? "cell--dying" : "cell--dead")
         ).toBe(true);
         expect(
-          cellEl.classList.contains(cell ? "cell--dead" : "cell--alive")
+          cellEl.classList.contains(cell ? "cell--dead" : "cell--alive") ||
+            cellEl.classList.contains(cell ? "cell--dead" : "cell--dying")
         ).toBe(false);
       })
     );
@@ -71,7 +74,7 @@ describe("drawField", () => {
 
     (
       el.querySelector(
-        '.cell.cell--alive[data-x="1"][data-y="2"]'
+        '.cell.cell--dying[data-x="1"][data-y="2"]'
       ) as HTMLElement
     ).click();
 

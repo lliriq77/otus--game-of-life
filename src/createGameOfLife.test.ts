@@ -15,10 +15,17 @@ describe("createGameOfLife", () => {
 
   function isCellAlive(x: number, y: number): boolean {
     return (
-      el.querySelector(`
+      (
+        el.querySelector(`
       .cell[data-y="${y}"][data-x="${x}"]
       `) as HTMLElement
-    ).classList.contains("cell--alive");
+      ).classList.contains("cell--alive") ||
+      (
+        el.querySelector(`
+    .cell[data-y="${y}"][data-x="${x}"]
+    `) as HTMLElement
+      ).classList.contains("cell--dying")
+    );
   }
 
   beforeEach(() => {
@@ -61,7 +68,7 @@ describe("createGameOfLife", () => {
     (el.querySelector(selector) as HTMLElement).click();
     expect(
       (el.querySelector(selector) as HTMLElement).classList.contains(
-        "cell--alive"
+        "cell--dying"
       )
     ).toBe(true);
     expect(
