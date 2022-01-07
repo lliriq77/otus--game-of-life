@@ -61,6 +61,7 @@ export function createGameOfLife(
   buttonMin.addEventListener("click", () => {
     WIDTH -= 1;
     HEIGHT -= 1;
+
     const newField = Array.from({ length: HEIGHT }).map(
       () => Array.from({ length: WIDTH }).fill(0) as number[]
     );
@@ -71,13 +72,19 @@ export function createGameOfLife(
         newField[y][x] = field[y][x];
       }
     }
+
     drawField(fieldEl, newField, onCellClick);
     field = newField;
   });
 
   function makeGameStep(): void {
-    field = getNextGeneration(field);
-    drawField(fieldEl, field, onCellClick);
+    if (el.querySelectorAll(".cell--dying").length !== 0) {
+      field = getNextGeneration(field);
+      drawField(fieldEl, field, onCellClick);
+    } else {
+      clearInterval(intervalId);
+      buttonEl.innerHTML = "Start";
+    }
   }
 
   const onCellClick: (a: number, b: number) => void = (x, y) => {
