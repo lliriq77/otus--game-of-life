@@ -1,15 +1,15 @@
 import { drawField } from "./utils/drawField";
 import { getNextGeneration } from "./utils/getNextGeneration";
 
-const WIDTH = 20;
-const HEIGHT = 20;
+let WIDTH = 20;
+let HEIGHT = 20;
 const GAME_STEP_DELAY_IN_MS = 1000;
-
+let field: number[][];
 export function createGameOfLife(
   el: HTMLElement,
   step = GAME_STEP_DELAY_IN_MS
 ): void {
-  let field = Array.from({ length: HEIGHT }).map(
+  field = Array.from({ length: HEIGHT }).map(
     () => Array.from({ length: WIDTH }).fill(0) as number[]
   );
 
@@ -21,6 +21,14 @@ export function createGameOfLife(
   buttonEl.innerHTML = "Start";
   el.append(buttonEl);
 
+  const buttonPlus: HTMLButtonElement = document.createElement("button");
+  buttonPlus.innerHTML = "+";
+  el.append(buttonPlus);
+
+  const buttonMin: HTMLButtonElement = document.createElement("button");
+  buttonMin.innerHTML = "-";
+  el.append(buttonMin);
+
   let intervalId: any;
   buttonEl.addEventListener("click", () => {
     if (buttonEl.innerHTML === "Start") {
@@ -30,6 +38,40 @@ export function createGameOfLife(
       buttonEl.innerHTML = "Start";
       clearInterval(intervalId);
     }
+  });
+
+  buttonPlus.addEventListener("click", () => {
+    WIDTH += 1;
+    HEIGHT += 1;
+    const newField = Array.from({ length: HEIGHT }).map(
+      () => Array.from({ length: WIDTH }).fill(0) as number[]
+    );
+    field = getNextGeneration(field);
+
+    for (let y = 0; y < newField.length - 1; y += 1) {
+      for (let x = 0; x < newField[y].length - 1; x += 1) {
+        newField[y][x] = field[y][x];
+      }
+    }
+    drawField(fieldEl, newField, onCellClick);
+    field = newField;
+  });
+
+  buttonMin.addEventListener("click", () => {
+    WIDTH -= 1;
+    HEIGHT -= 1;
+    const newField = Array.from({ length: HEIGHT }).map(
+      () => Array.from({ length: WIDTH }).fill(0) as number[]
+    );
+    field = getNextGeneration(field);
+
+    for (let y = 0; y < newField.length; y += 1) {
+      for (let x = 0; x < newField[y].length; x += 1) {
+        newField[y][x] = field[y][x];
+      }
+    }
+    drawField(fieldEl, newField, onCellClick);
+    field = newField;
   });
 
   function makeGameStep(): void {
