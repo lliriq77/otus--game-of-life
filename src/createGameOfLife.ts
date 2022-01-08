@@ -78,10 +78,11 @@ export function createGameOfLife(
   });
 
   function makeGameStep(): void {
-    if ((
-      el.querySelectorAll(".cell--dying").length
-      + el.querySelectorAll(".cell--alive").length
-    ) !== 0) {
+    if (
+      el.querySelectorAll(".cell--dying").length +
+        el.querySelectorAll(".cell--alive").length !==
+      0
+    ) {
       field = getNextGeneration(field);
       drawField(fieldEl, field, onCellClick);
     } else {
