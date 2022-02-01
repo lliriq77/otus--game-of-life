@@ -90,7 +90,6 @@ describe("createGameOfLife", () => {
     ).toBe(true);
   });
   it("it changes field state over time (runs game loop) and stops it", async () => {
-
     clickCell(2, 1);
     clickCell(2, 2);
     clickCell(2, 3);

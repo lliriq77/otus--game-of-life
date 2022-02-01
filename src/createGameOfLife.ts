@@ -30,7 +30,7 @@ export function createGameOfLife(
   buttonMin.innerHTML = "-";
   el.append(buttonMin);
 
-  let intervalId: any;
+  let intervalId: ReturnType<typeof setTimeout>;
   buttonEl.addEventListener("click", () => {
     if (buttonEl.innerHTML === "Start") {
       buttonEl.innerHTML = "Stop";
