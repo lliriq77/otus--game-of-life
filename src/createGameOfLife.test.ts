@@ -90,11 +90,11 @@ describe("createGameOfLife", () => {
     ).toBe(true);
   });
   it("it changes field state over time (runs game loop) and stops it", async () => {
-    // настроить Мигалкy
+
     clickCell(2, 1);
     clickCell(2, 2);
     clickCell(2, 3);
-    // проверить Мигалкy
+
     expect(isCellAlive(2, 1)).toBe(true);
     expect(isCellAlive(2, 2)).toBe(true);
     expect(isCellAlive(2, 3)).toBe(true);
@@ -104,11 +104,11 @@ describe("createGameOfLife", () => {
     expect(isCellAlive(3, 1)).toBe(false);
     expect(isCellAlive(3, 2)).toBe(false);
     expect(isCellAlive(3, 3)).toBe(false);
-    // начать игру
+
     (el.querySelector("button") as HTMLButtonElement).click();
-    // подождать
+
     await sleep(step);
-    // проверить Мигалкy
+
     expect(isCellAlive(1, 2)).toBe(true);
     expect(isCellAlive(2, 2)).toBe(true);
     expect(isCellAlive(3, 2)).toBe(true);
@@ -118,9 +118,9 @@ describe("createGameOfLife", () => {
     expect(isCellAlive(1, 3)).toBe(false);
     expect(isCellAlive(2, 3)).toBe(false);
     expect(isCellAlive(3, 3)).toBe(false);
-    // подождать
+
     await sleep(step);
-    // проверить Мигалкy
+
     expect(isCellAlive(2, 1)).toBe(true);
     expect(isCellAlive(2, 2)).toBe(true);
     expect(isCellAlive(2, 3)).toBe(true);
@@ -130,11 +130,11 @@ describe("createGameOfLife", () => {
     expect(isCellAlive(3, 1)).toBe(false);
     expect(isCellAlive(3, 2)).toBe(false);
     expect(isCellAlive(3, 3)).toBe(false);
-    // остановить игру
+
     (el.querySelector("button") as HTMLButtonElement).click();
-    // подождать
+
     await sleep(20 * step);
-    // проверить Мигалкy
+
     expect(isCellAlive(2, 1)).toBe(true);
     expect(isCellAlive(2, 2)).toBe(true);
     expect(isCellAlive(2, 3)).toBe(true);
